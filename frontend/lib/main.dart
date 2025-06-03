@@ -17,7 +17,17 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'SubTrack AI', // Puedes cambiar esto
       theme: ThemeData(
-        primarySwatch: Colors.blue, // Puedes cambiar esto
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(
+              0xFF006464), // Color base del esquema (inicio degradado)
+          primary: const Color(0xFF006464), // Color primario
+          secondary:
+              const Color(0xFF00C8C8), // Color secundario (final degradado)
+          // Puedes definir otros colores aquí como surface, error, etc.
+          brightness: Brightness.light, // O dark si prefieres un tema oscuro
+        ),
+        useMaterial3:
+            true, // Usar Material Design 3 (opcional pero recomendado)
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       localizationsDelegates: const [
