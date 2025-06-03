@@ -6,7 +6,7 @@ import '../../features/onboarding/presentation/screens/onboarding_screen.dart';
 import '../../features/subscriptions/presentation/screens/add_subscription_screen.dart';
 import '../../features/calendar/presentation/screens/calendar_screen.dart';
 import '../../features/report/report.dart';
-import '../../features/subscriptions/presentation/screens/subscription_plans_screen.dart';
+import '../../features/auth/presentation/screens/register_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -37,8 +37,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => ReportScreen(),
       ),
       GoRoute(
-        path: '/upgratePlan',
-        builder: (context, state) => const SubscriptionPlansScreen(),
+        path: '/register',
+        builder: (context, state) => const RegisterScreen(),
       ),
     ],
   );

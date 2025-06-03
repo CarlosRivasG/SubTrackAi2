@@ -11,9 +11,7 @@ class DashboardScreen extends ConsumerWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 1, 101, 100),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         title: Text('SubTrackAI',
             style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
         centerTitle: false,
@@ -33,38 +31,26 @@ class DashboardScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF006464),
-              Color(0xFF00C8C8),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Hola, Usuario 👋',
+                style: textTheme.headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 24),
+              _buildSummarySection(context),
+              const SizedBox(height: 30),
+              _buildUpcomingPaymentsSection(context),
+              const SizedBox(height: 30),
+              _buildQuickActionsSection(context),
+              // 👇 Este SizedBox evita que el FAB se superponga al contenido
+              const SizedBox(height: 100),
             ],
-          ),
-        ),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hola, Usuario 👋',
-                  style: textTheme.headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 24),
-                _buildSummarySection(context),
-                const SizedBox(height: 30),
-                _buildUpcomingPaymentsSection(context),
-                const SizedBox(height: 30),
-                _buildQuickActionsSection(context),
-                const SizedBox(height: 100),
-              ],
-            ),
           ),
         ),
       ),
@@ -351,5 +337,12 @@ class DashboardScreen extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+extension IterableFirstOrNull<T> on Iterable<T> {
+  T? get firstOrNull {
+    if (isEmpty) return null;
+    return first;
   }
 }
