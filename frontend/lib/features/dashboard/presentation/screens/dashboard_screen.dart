@@ -86,7 +86,7 @@ class DashboardScreen extends ConsumerWidget {
             _buildSummaryItemCard(
               context,
               'Suscripciones Activas',
-              '5',
+              '4',
               Icons.subscriptions,
               colorScheme.primaryContainer,
               colorScheme.onPrimaryContainer,
