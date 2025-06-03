@@ -27,4 +27,9 @@ export class SubscriptionsController {
   getUpcomingPayments(@Request() req) {
     return this.subscriptionsService.getUpcomingPayments(req.user);
   }
+
+  @Get('user')
+  findByUser(@Request() req) {
+    return this.subscriptionsService.findByUserId(req.user.id);
+  }
 } 

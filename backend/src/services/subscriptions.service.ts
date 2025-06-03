@@ -79,4 +79,12 @@ export class SubscriptionsService {
       order: { nextBillingDate: 'ASC' },
     });
   }
+
+  // Nueva función para encontrar suscripciones por ID de usuario
+  async findByUserId(userId: string): Promise<Subscription[]> {
+    return this.subscriptionsRepository.find({
+      where: { user: { id: userId } },
+      order: { nextBillingDate: 'ASC' }, // Opcional: ordenar como en findAll
+    });
+  }
 } 
